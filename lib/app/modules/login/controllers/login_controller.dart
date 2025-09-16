@@ -20,9 +20,17 @@ class LoginController extends GetxController {
           if (userCredential.user!.emailVerified == true) {
             Get.offAllNamed(Routes.HOME);
           } else {
-            await userCredential.user!.sendEmailVerification();
-            Get.snackbar("Terjadi Kesalahan", "Silahkan verifikasi email anda");
-            return;
+            Get.defaultDialog(
+              title: "Verifikasi Email",
+              middleText: "Anda belum verifikasi email, verifikasi sekarang ?",
+              textCancel: "Nanti",
+              textConfirm: "Verifikasi",
+              onConfirm: () async {
+                await userCredential.user!.sendEmailVerification();
+                Get.back();
+                Get.snackbar("Berhasil", "Link verifikasi telah dikirim");
+              },
+            );
           }
         }
 

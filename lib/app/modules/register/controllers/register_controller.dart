@@ -30,6 +30,7 @@ class RegisterController extends GetxController {
             "email": emailC.text,
             "CreatedAt": DateTime.now().toIso8601String(),
           });
+          await userCredential.user!.sendEmailVerification();
         }
 
         print(userCredential);
