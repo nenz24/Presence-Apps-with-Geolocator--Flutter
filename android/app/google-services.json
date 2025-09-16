@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "624383909624",
+    "project_id": "presence-ad54b",
+    "storage_bucket": "presence-ad54b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624383909624:android:7b2e95bba5d55ceb9b250d",
+        "android_client_info": {
+          "package_name": "com.dan.presence"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaiceGe8-kMV7IAhR3-IskzsDrDrAXCf0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
