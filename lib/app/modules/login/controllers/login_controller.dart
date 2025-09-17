@@ -18,7 +18,11 @@ class LoginController extends GetxController {
             email: emailC.text, password: passC.text);
         if (userCredential.user != null) {
           if (userCredential.user!.emailVerified == true) {
-            Get.offAllNamed(Routes.HOME);
+            if (passC.text == "password") {
+              Get.offAllNamed(Routes.CREATE_PASSWORD);
+            } else {
+              Get.offAllNamed(Routes.HOME);
+            }
           } else {
             Get.defaultDialog(
               title: "Verifikasi Email",
@@ -26,9 +30,14 @@ class LoginController extends GetxController {
               textCancel: "Nanti",
               textConfirm: "Verifikasi",
               onConfirm: () async {
-                await userCredential.user!.sendEmailVerification();
-                Get.back();
-                Get.snackbar("Berhasil", "Link verifikasi telah dikirim");
+                try {
+                  await userCredential.user!.sendEmailVerification();
+                  Get.back();
+                  Get.snackbar("Berhasil", "Link verifikasi telah dikirim");
+                } catch (e) {
+                  Get.back();
+                  Get.snackbar("Terjadi Kesalahan", e.toString());
+                }
               },
             );
           }
